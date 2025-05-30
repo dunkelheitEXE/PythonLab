@@ -4,31 +4,16 @@ print("*"*20)
 
 stack = []
 
-counter = 0
-
 while True:
-    command = input("Escribe un comando. Si tienes duda ingresa 'HELP'")
-    if command == "HELP":
-        print("Comandos disponibles")
-        print("add: Agrega productos al stack")
-        print("remove: Elimina un producto del stack")
-        print("show: Ver stack")
-    elif command == "add":
-        name = input("Nombre del producto: ")
-        price = float(input("Precio: "))
-        category = input("Categoria: ")
-        product = {
-            "id": counter,
-            "name": name,
-            "price": price,
-            "category": category
-        }
-        stack.append(product)
-        counter += 1
-    elif command == "show":
-        print("Stack de Productos")
-        for product in stack:
-            print(product)
-    elif command == "exit":
-        print("Saliendo...")
-        break
+    try:
+        entrada = input("ins:~")
+        command = entrada.split()
+        if command[0] == "help":
+            print("COMANDOS")
+            print("-"*10)
+            print("add <producto> <precio> <categoria>")
+            print()
+        elif command[0] == "add":
+            print(f"producto {command[1]} con precio {command[2]} ha sido añadido")
+    except IndexError:
+        print("Comando no existente o con falta de parametros")
