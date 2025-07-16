@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - IA Creadora de Apps</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">IA Creadora</div>
+        <nav>
+            <a href="/">Inicio</a>
+        </nav>
+    </header>
+    <section class="chat">
+        <div class="chat-history">
+            <div class="message user">Hola, necesito ayuda para crear una app web.</div>
+            <div class="message ai">¡Claro! ¿Qué tipo de aplicación web quieres crear?</div>
+        </div>
+        <form class="chat-input">
+            <input type="text" placeholder="Escribe tu mensaje...">
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+        </form>
+    </section>
+</body>
+</html>
