@@ -13,7 +13,6 @@ mydb = {
 
 @app.route("/")
 def home ():
-
     #Crear la conexion
     conexion = mysql.connector.connect(**mydb)
     cursor = conexion.cursor(dictionary=True) 
@@ -29,7 +28,7 @@ def home ():
     cursor.close()
     conexion.close()
     
-    return render_template("personajes.html",variable=datos)
+    return render_template("index.html")
 
 app.run(debug=True)
 # app.run(debug=True, host="aqui tu ip")

@@ -5,9 +5,9 @@ app = Flask(__name__)
 
 # Datos de la conexión a la bd
 mydb = {
-    'host': '10.42.0.1',
+    'host': '127.0.0.1',
     'user': 'root',
-    'password': '9849',
+    'password': '211104',
     'database': 'AAAJ'
 }
 
@@ -15,11 +15,11 @@ mydb = {
 def index():
     conexion = mysql.connector.connect(**mydb)
     cursor = conexion.cursor(dictionary=True)
-
-    query = "SELECT * FROM"
-    data = [
-            {"nombre": "Alan", "Materia": "Mat 1"}
-            ]
+    query = "SELECT * FROM Alumnos"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    cursor.close()
+    
     return render_template('index.html', data=data)
 
 app.run(debug=True)
