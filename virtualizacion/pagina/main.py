@@ -11,9 +11,11 @@ mydb = {
     'database': 'AAAJ'
 }
 
+conexion = mysql.connector.connect(**mydb)
+cursor = conexion.cursor(dictionary=True)
+
 @app.route("/")
 def index():
-    conexion = mysql.connector.connect(**mydb)
     cursor = conexion.cursor(dictionary=True)
     query = "SELECT * FROM Alumnos"
     cursor.execute(query)
@@ -21,5 +23,25 @@ def index():
     cursor.close()
     
     return render_template('index.html', data=data)
+
+@app.route("/profesores")
+def profesores():
+    cursor = conexion.cursor(dictionary=True)
+    query = "SELECT * FROM Profesores"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    cursor.close()
+    
+    return render_template('profesores.html', data=data)
+
+@app.route("/materias")
+def materias():
+    cursor = conexion.cursor(dictionary=True)
+    query = "SELECT * FROM Materias"
+    cursor.execute(query)
+    data = cursor.fetchall()
+    cursor.close()
+    
+    return render_template('materias.html', data=data)
 
 app.run(debug=True)

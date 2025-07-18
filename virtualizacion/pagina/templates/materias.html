@@ -102,11 +102,11 @@
     </nav>
 
     <div class="container">
-        <h1>Alumnado</h1>
+        <h1>Materias</h1>
         <div class="cards"> 
             {% for u in data %}
             <div class="card">
-              <h3>{{ u["nombre"] }}</h3>
+              <h3>{{ u["materia"] }}</h3>
             </div>
             {%endfor%}
         </div>
