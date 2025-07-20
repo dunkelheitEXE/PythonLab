@@ -106,7 +106,8 @@
         <div class="cards"> 
             {% for u in data %}
             <div class="card">
-              <h3>{{ u["materia"] }}</h3>
+              <h3>{{ u["nombre"] }}</h3>
+              <b>Horas por semana: {{ u["hrsSemana"] }}</b>
             </div>
             {%endfor%}
         </div>

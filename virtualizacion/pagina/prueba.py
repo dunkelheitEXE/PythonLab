@@ -3,19 +3,27 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Datos de la conexión a la bd
-mydb = {
-    'host': '100.100.100.73',
-    'user': 'root',
-    'password': '9849',
-    'database': 'AAAJ'
-}
+def get_connection(dbName, port):
+    mydb = {
+        'host': '100.100.100.73',
+        'user': 'AAAJ',
+        'port': port,
+        'password': 'root',
+        'database': dbName 
+    }
+    conexion = mysql.connector.connect(**mydb)
 
-conexion = mysql.connector.connect(**mydb)
+    return conexion
+
+
+
+conexion = get_connection('alumnos','3310')
 cursor = conexion.cursor(dictionary=True)
 
 @app.route("/")
 def index():
+
+    conexion = get_connection('alumnos','3310')
     cursor = conexion.cursor(dictionary=True)
     query = "SELECT * FROM Alumnos"
     cursor.execute(query)
@@ -26,6 +34,7 @@ def index():
 
 @app.route("/profesores")
 def profesores():
+    conexion = get_connection('profesores','3320')
     cursor = conexion.cursor(dictionary=True)
     query = "SELECT * FROM Profesores"
     cursor.execute(query)
@@ -36,6 +45,7 @@ def profesores():
 
 @app.route("/materias")
 def materias():
+    conexion = get_connection('materias','3325')
     cursor = conexion.cursor(dictionary=True)
     query = "SELECT * FROM Materias"
     cursor.execute(query)
@@ -44,4 +54,4 @@ def materias():
     
     return render_template('materias.html', data=data)
 
-app.run(debug=True, host="100.100.100.74")
+app.run(host="100.100.100.74")

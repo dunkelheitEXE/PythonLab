@@ -98,6 +98,7 @@
             <li><a href="/">Inicio</a></li>
             <li><a href="/profesores">Profesores</a></li>
             <li><a href="/materias">Materias</a></li>
+            <li>parejaaas</li>
         </ul>
     </nav>
 
@@ -107,6 +108,7 @@
             {% for u in data %}
             <div class="card">
               <h3>{{ u["nombre"] }}</h3>
+              <b>Edad: {{ u["anos"] }}</b>
             </div>
             {%endfor%}
         </div>
